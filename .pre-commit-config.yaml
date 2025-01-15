@@ -10,3 +10,11 @@ repos:
       name: ruff-format
       pass_filenames: false
       args: ["--line-length", "120", "--exclude", "./pjsip-bindings-fork"]
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: pytest
+        language: system
+        types: [python]
+        args: []
