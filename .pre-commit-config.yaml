@@ -1,0 +1,12 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 'v0.1.15'
+    hooks:
+    - id: ruff
+      name: ruff
+      pass_filenames: false
+      args: ["--line-length", "120", "--fix", "--exclude", "./pjsip-bindings-fork"]
+    - id: ruff-format
+      name: ruff-format
+      pass_filenames: false
+      args: ["--line-length", "120", "--exclude", "./pjsip-bindings-fork"]

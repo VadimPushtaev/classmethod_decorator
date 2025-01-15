@@ -1,4 +1,4 @@
-from typing import Callable, ParamSpec, TypeVar, Any, Protocol, Self
+from typing import Callable, ParamSpec, TypeVar, Any, Protocol
 
 CLASS = TypeVar("CLASS", bound=type)
 P = ParamSpec("P")
@@ -24,15 +24,11 @@ def enable_classmethod_decorators[CLASS](klass: CLASS) -> CLASS:
     attr: Any
 
     for attr_name, attr in klass.__dict__.items():
-        if (
-            class_method := getattr(attr, "__classmethod_decorator__", None)
-        ) is not None:
+        if (class_method := getattr(attr, "__classmethod_decorator__", None)) is not None:
             # find this class_method in the class
             class_method_to_be_called = getattr(klass, class_method.__name__, None)
             if class_method_to_be_called is None:
-                raise AttributeError(
-                    f"Class method {class_method.__name__} not found in class {klass}"
-                )
+                raise AttributeError(f"Class method {class_method.__name__} not found in class {klass}")
 
             # decorate
             setattr(klass, attr_name, class_method_to_be_called(attr))
