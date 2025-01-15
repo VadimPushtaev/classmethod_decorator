@@ -1,0 +1,14 @@
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+# Additional settings for enhanced strictness
+warn_unused_configs = true
+warn_unreachable = true
+enable_error_code = ["ignore-without-code"]
+warn_unused_ignores = true
+show_error_codes = true
+check_untyped_defs = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
