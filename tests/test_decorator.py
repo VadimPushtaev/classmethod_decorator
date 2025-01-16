@@ -5,7 +5,7 @@ from classmethod_decorator.decorator import enable_classmethod_decorators, class
 
 @enable_classmethod_decorators
 class Dummy:
-    DECORATED = []
+    DECORATED: list[Callable[..., int]] = []
 
     @classmethod
     def double(cls, method: Callable[[Self, int], int]) -> Callable[[Self, int], int]:
