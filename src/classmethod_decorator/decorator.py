@@ -30,6 +30,12 @@ def enable_classmethod_decorators[CLASS](klass: CLASS) -> CLASS:
             if class_method_to_be_called is None:
                 raise AttributeError(f"Class method {class_method.__name__} not found in class {klass}")
 
+            # check that we found the correct class method
+            if class_method_to_be_called.__func__ is not class_method.__func__:
+                raise AttributeError(
+                    f"Class method {class_method.__name__} in class {klass} is not built from {class_method.__func__}"
+                )
+
             # decorate
             setattr(klass, attr_name, class_method_to_be_called(attr))
 
