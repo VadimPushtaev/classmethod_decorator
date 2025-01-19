@@ -1,0 +1,2 @@
+class ClassNotDecoratedError(Exception):
+    pass
