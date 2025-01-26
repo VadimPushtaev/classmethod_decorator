@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from functools import wraps
 from typing import Callable, ParamSpec, TypeVar, Any, Protocol, Generic, cast
 
 from classmethod_decorator.exceptions import ClassNotDecoratedError
@@ -58,6 +59,6 @@ def enable_classmethod_decorators[CLASS](klass: CLASS) -> CLASS:
                 )
 
             # decorate
-            setattr(klass, attr_name, class_method_to_be_called(attr.wrapped))
+            setattr(klass, attr_name, wraps(attr.wrapped)(class_method_to_be_called(attr.wrapped)))
 
     return klass
