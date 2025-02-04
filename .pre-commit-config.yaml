@@ -16,6 +16,7 @@ repos:
         name: pytest
         entry: pytest
         language: system
+        pass_filenames: false
         types: [python]
         args: []
   - repo: https://github.com/pre-commit/mirrors-mypy
