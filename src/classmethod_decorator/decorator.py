@@ -6,7 +6,7 @@ from classmethod_decorator.exceptions import ClassNotDecoratedError
 
 CLASS = TypeVar("CLASS", bound=type)
 P = ParamSpec("P")
-R = TypeVar("R", covariant=True)
+R = TypeVar("R")
 
 
 class _ClassMethod(Protocol):
